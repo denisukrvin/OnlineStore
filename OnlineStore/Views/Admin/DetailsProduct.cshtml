@@ -1,0 +1,60 @@
+﻿@model OnlineStore.Models.Product
+
+@{
+    ViewBag.Title = "Деталі товару";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row d-flex justify-content-between mb-3">
+            <div class="col-4">
+                <a class="btn btn-dark btn-sm" href="@Url.Action("Products", "Admin")" role="button">
+                    <i class="fas fa-reply"></i>
+                </a>           
+            </div>
+            <div class="col-8">
+                <h5>Деталі товару</h5>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="productName">Назва</label>
+                    <input type="text" class="form-control" id="productName" maxlength="50" value="@Model.Name" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Опис</label>
+                    <textarea class="form-control" rows="5" id="productDescription" maxlength="500" readonly>@Model.Description</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Ціна</label>
+                    <input type="text" class="form-control" id="productPrice" maxlength="10" value="@Model.Price" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Зображення</label>
+                    <input type="text" class="form-control" id="productImage" maxlength="150" value="@Model.ImagePath" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="productAvailability">Наявність</label>
+                    @if (Model.Availability)
+                    {
+                        <input type="text" class="form-control" id="productAvailability" value="В наявності" readonly>
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" id="productAvailability" value="Немає в наявності" readonly>
+                    }                   
+                </div>
+                <div class="form-group">
+                    <label for="productCode">Код</label>
+                    <input type="text" class="form-control" id="productCode" maxlength="10" value="@Model.ProductCode" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="productCategoryId">Категорія</label>
+                    <input type="text" class="form-control" id="productCategoryId" maxlength="10" value="@Model.Category.Description" readonly>
+                </div>
+            </div>
+        </div>   
+

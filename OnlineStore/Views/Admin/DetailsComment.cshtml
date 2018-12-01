@@ -1,0 +1,40 @@
+﻿@model OnlineStore.Models.Comment
+
+@{
+    ViewBag.Title = "Деталі відгука";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row d-flex justify-content-between mb-3">
+        <div class="col-4">
+            <a class="btn btn-dark btn-sm" href="@Url.Action("Comments", "Admin")" role="button">
+                <i class="fas fa-reply"></i>
+            </a>           
+        </div>
+        <div class="col-8">
+            <h5>Деталі відгука</h5>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="commentAuthor">Автор</label>
+                <input type="text" class="form-control" id="commentAuthor" maxlength="15" value="@Model.Author" readonly>
+            </div>
+            <div class="form-group">
+                <label for="commentText">Текст</label>
+                <textarea class="form-control" rows="3" id="commentText" maxlength="300" readonly>@Model.Text</textarea>
+            </div>
+            <div class="form-group">
+                <label for="commentTime">Час та дата</label>
+                <input type="text" class="form-control" id="commentTime" maxlength="30" value="@Model.Time" readonly>
+            </div>          
+            <div class="form-group">
+                <label for="commentTime">Товар</label>
+                <input type="text" class="form-control" id="commentProduct" maxlength="30" value="@Model.Product.Name" readonly>
+            </div>           
+        </div>
+    </div>   

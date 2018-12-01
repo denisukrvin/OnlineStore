@@ -1,0 +1,41 @@
+﻿@model OnlineStore.Models.Category
+
+@{
+    ViewBag.Title = "Редагувати категорію";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row d-flex justify-content-between mb-3">
+        <div class="col-4">
+            <a class="btn btn-dark btn-sm" href="@Url.Action("Categories", "Admin")" role="button">
+                <i class="fas fa-reply"></i>
+            </a>
+        </div>
+        <div class="col-8">
+            <h5>Редагувати категорію</h5>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <form action="/Admin/EditCategory" method="post">
+                <div class="form-group">
+                    <input type="hidden" name="Id" value="@Model.Id" />
+                </div>                
+                <div class="form-group">
+                    <label for="categoryName">Ім'я</label>
+                    <input type="text" class="form-control" name="Name" id="categoryName" maxlength="50" value="@Model.Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoryDescription">Опис</label>
+                    <input type="text" class="form-control" name="Description" id="categoryDescription" maxlength="50" value="@Model.Description" required>
+                </div>               
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark">Зберегти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<OnlineStore.Models.Category>
+
+<ul class="navbar-nav mr-auto">
+    @foreach (var item in Model)
+    {
+        <li class="nav-item">
+            @Html.ActionLink(item.Description, "Browse", "Home", new { category = item.Name }, new { @class = "nav-link text-dark" })
+        </li>
+    }
+</ul>
+

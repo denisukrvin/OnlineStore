@@ -1,0 +1,84 @@
+﻿@model OnlineStore.Models.Product
+
+@{
+    ViewBag.Title = "Редагувати товар";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row d-flex justify-content-between mb-3">
+        <div class="col-4">
+            <a class="btn btn-dark btn-sm" href="@Url.Action("Products", "Admin")" role="button">
+                <i class="fas fa-reply"></i>
+            </a>
+        </div>
+        <div class="col-8">
+            <h5>Редагувати товар</h5>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <form action="/Admin/EditProduct" method="post">
+                <div class="form-group">
+                    <input type="hidden" name="Id" value="@Model.Id" />
+                </div>
+                <div class="form-group">
+                    <label for="productName">Назва</label>
+                    <input type="text" class="form-control" name="Name" id="productName" maxlength="50" value="@Model.Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Опис</label>
+                    <textarea class="form-control" rows="5" name="Description" id="productDescription" maxlength="500" required>@Model.Description</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Ціна</label>
+                    <input type="text" class="form-control" name="Price" id="productPrice" maxlength="10" value="@Model.Price" required>
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Зображення</label>
+                    <input type="text" class="form-control" name="ImagePath" id="productImage" maxlength="150" value="@Model.ImagePath" required>
+                </div>
+                <div class="form-group">
+                    <label for="productAvailability">Наявність</label>
+                    <select class="form-control" name="Availability" id="productAvailability" required>
+                        @if (Model.Availability)
+                        {
+                            <option value="1" selected>В наявності</option>
+                            <option value="0">Немає в наявності</option>
+                        }
+                        else
+                        {
+                            <option value="1">В наявності</option>
+                            <option value="0" selected>Немає в наявності</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productCode">Код</label>
+                    <input type="text" class="form-control" name="ProductCode" id="productCode" maxlength="10" value="@Model.ProductCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="productCategoryId">Категорія</label>                 
+                    <select class="form-control" name="CategoryId" id="productCategoryId" required>
+                        @foreach (var item in ViewBag.Categories)
+                        {
+                            if (item.Id == Model.CategoryId)
+                            {
+                                <option value="@item.Id" selected>@item.Description</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.Description</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark">Зберегти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+

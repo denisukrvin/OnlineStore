@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Створити відгук";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row d-flex justify-content-between mb-3">
+        <div class="col-4">
+            <a class="btn btn-dark btn-sm" href="@Url.Action("Comments", "Admin")" role="button">
+                <i class="fas fa-reply"></i>
+            </a>
+        </div>
+        <div class="col-8">
+            <h5>Створити відгук</h5>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <form action="/Admin/CreateComment" method="post">
+                <div class="form-group">
+                    <label for="commentAuthor">Автор</label>
+                    <input type="text" class="form-control" name="Author" id="commentAuthor" maxlength="15" required>
+                </div>
+                <div class="form-group">
+                    <label for="commentText">Текст</label>
+                    <textarea class="form-control" rows="3" name="Text" id="commentText" maxlength="300" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="commentTime">Час та дата</label>
+                    <input type="text" class="form-control" name="Time" id="commentTime" maxlength="30" required>
+                </div>
+                <div class="form-group">
+                    <label for="commentProductId">Товар</label>
+                    <select class="form-control" name="ProductId" id="commentProductId" required>
+                        <option selected>--- Оберіть товар ---</option>
+                        @foreach (var item in ViewBag.Products)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark">Створити</button>
+                </div>
+            </form>
+        </div>
+    </div>
+

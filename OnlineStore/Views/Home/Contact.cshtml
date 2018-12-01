@@ -1,0 +1,94 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Контакти";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 text-center">
+            <h2>Контакти</h2>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <h5>Телефони</h5>
+                    <p class="text-muted">
+                        <i class="fas fa-phone fa-rotate-90"></i> 063 999-99-99 <br />
+                        <i class="fas fa-phone fa-rotate-90"></i> 068 999-99-99
+                    </p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h5>E-mail</h5>
+                    <p class="text-muted">
+                        <i class="fas fa-envelope"></i> info@store-online.ml
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <h5>Адреса</h5>
+                    <p class="text-muted">
+                        <i class="fas fa-map-marker-alt"></i> м.Київ, вул.Здолбунівська, 3
+                    </p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h5>Графік роботи</h5>
+                    <p class="text-muted">
+                        <i class="fas fa-clock"></i> Пн-пт: з 9:00 до 20:00
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.4291215760672!2d30.607624315706182!3d50.414475979470446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDI0JzUyLjEiTiAzMMKwMzYnMzUuMyJF!5e0!3m2!1sen!2sua!4v1543577901767" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-6 feedback">
+            <hr class="my-4">
+            <form id="formFeedback">
+                <div class="form-row">
+                    <div class="form-group col-12 text-center">
+                        <h3 class="mb-3">Напишіть нам</h3>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="userName">Ваше ім'я</label>
+                        <input type="text" class="form-control" name="userName" id="userName">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="userEmail">E-mail</label>
+                        <input type="email" class="form-control" name="userEmail" id="userEmail">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="userMessage">Повідомлення</label>
+                        <textarea class="form-control" rows="5" name="userMessage" id="userMessage"></textarea>
+                    </div>
+                    <div class="form-group col-12 d-flex justify-content-center">
+                        <div class="g-recaptcha" data-sitekey="6LeYPXwUAAAAAA0XHBVslP6ZL2jC4K7LCOq7OKhT"></div>
+                    </div>
+                    <div class="form-group col-12 d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-success" id="btnSendFeedback">Відправити</button>
+                    </div>
+                    <div class="form-group col-12">
+                        <div class="" id="sendFeedbackResult" role="alert" style="display: none;"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <!-- Feedback JS -->
+    @Scripts.Render("~/bundles/feedback")
+    <!-- Recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+}

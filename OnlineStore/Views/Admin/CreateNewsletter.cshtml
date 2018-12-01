@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Створити розсилку";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row d-flex justify-content-between mb-3">
+        <div class="col-4">
+            <a class="btn btn-dark btn-sm" href="@Url.Action("Newsletter", "Admin")" role="button">
+                <i class="fas fa-reply"></i>
+            </a>
+        </div>
+        <div class="col-8">
+            <h5>Створити розсилку</h5>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <form id="formCreateNewsletter">
+                <div class="form-group">
+                    <label for="subject">Заголовок</label>
+                    <input type="text" class="form-control" name="subject" id="subject">
+                </div>
+                <div class="form-group">
+                    <label for="text">Повідомлення</label>
+                    <textarea type="text" class="form-control" rows="5" name="text" id="text"></textarea>
+                </div>               
+                <div class="form-group d-flex justify-content-center">
+                    <button type="button" class="btn btn-dark" id="btnCreateNewsletter">Створити</button>
+                </div>
+                <div class="form-group">
+                    <div class="" id="createNewsletterResult" role="alert" style="display: none;"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+

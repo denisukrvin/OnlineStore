@@ -1,0 +1,68 @@
+﻿main {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+img {
+    object-fit: contain;
+    width: 100%;
+}
+
+header {
+    margin-bottom: 3rem;
+}
+
+footer {
+    margin-top: 5rem;
+}
+
+.checkout-products-list, .checkout-total, #formCheckout {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.minus, .plus, .remove-cart-item, #btnOpenCart, #btnSearch {
+    color: black;
+}
+
+.social-icon {
+    font-size: 20px;
+    padding: 10px;
+    width: 40px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.social-icon:hover {
+    opacity: 0.8;
+}
+
+.fa-facebook-f {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-instagram {
+    background: #125688;
+    color: white;
+}
+
+.fa-viber {
+    background: #665CAC;
+    color: white;
+}
+
+.fa-telegram-plane {
+    background: #0088CC;
+    color: white;
+}
+
+.fa-github {
+    color: #212529;
+    font-size: 2rem;  
+}
+
+.fa-github:hover {
+    opacity: 0.8;
+}

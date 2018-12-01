@@ -1,0 +1,23 @@
+﻿body {
+    background-color: #f2f2f2;
+}
+
+main {
+    margin-top: 3rem;
+}
+
+.navbar {
+    background-color: #303547;
+    color: #fff;
+}
+
+.nav, .content {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+#categoryImage {
+    object-fit: contain;
+    height: 150px;
+    width: 200px;
+}

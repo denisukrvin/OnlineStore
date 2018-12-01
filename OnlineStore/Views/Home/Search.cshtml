@@ -1,0 +1,68 @@
+﻿@model IEnumerable<OnlineStore.Models.Product>
+
+@{
+    ViewBag.Title = "Пошук";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3>Пошук</h3>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <form action="/Search" method="post">
+                    <div class="input-group p-3">
+                        <input type="text" class="form-control" name="searchText" placeholder="Що будемо шукати?" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-outline-dark" id="btnSearchConfirm">Пошук</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="products mt-5">
+            @if (Model.Any())
+            {
+                <div class="container">
+                    <h5 class="mb-3">Результати пошуку:</h5>
+                    <div class="row">
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                <div class="card shadow mb-5">
+                                    <a href="@Url.Action("Details", "Home", new { category = item.Category.Name, code = item.ProductCode })">
+                                        <img class="card-img-top px-5 py-2" src="@item.ImagePath" height="180" alt="Product image">
+                                    </a>
+                                    <div class="card-body text-center">
+                                        <h6 class="card-title">@item.Name</h6>
+                                        <p class="card-text">@item.Price грн</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-light text-center text-dark" role="alert">
+                                <h4 class="alert-heading">По вашому запиту нічого не знайдено :(</h4>
+                                <p>Перевірте правильність введених вами даних</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+

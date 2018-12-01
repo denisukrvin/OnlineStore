@@ -1,0 +1,32 @@
+﻿@model IEnumerable<OnlineStore.Models.Product>
+
+@{
+    ViewBag.Title = ViewBag.CategoryName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="header d-flex justify-content-center">
+        <h3>Товари категорії - @ViewBag.CategoryName</h3>
+    </div>
+
+    <div class="products mt-5">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                        <div class="card shadow mb-5">
+                            <a href="@Url.Action("Details", "Home", new { category = item.Category.Name, code = item.ProductCode })">
+                                <img class="card-img-top px-5 py-2" src="@item.ImagePath" height="180" alt="Product image">
+                            </a>
+                            <div class="card-body text-center">
+                                <h6 class="card-title">@item.Name</h6>
+                                <p class="card-text">@item.Price грн</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+

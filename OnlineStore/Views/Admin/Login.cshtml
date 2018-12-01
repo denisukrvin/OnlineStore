@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Авторизація";
+}
+
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">   
+
+    <title>@ViewBag.Title - Admin</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-md-4">
+                <form id="adminLoginForm">
+                    <div class="form-group d-flex justify-content-center">
+                        <h4 class="mb-2 mt-3">Авторизація</h4>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon-login"><i class="fas fa-user-circle"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="Login" placeholder="Введіть ваш логін" maxlength="20" aria-describedby="basic-addon-login">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon-password"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" name="Password" placeholder="Введіть ваш пароль" maxlength="20" aria-describedby="basic-addon-password">
+                        </div>
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <div class="g-recaptcha" data-sitekey="6LeYPXwUAAAAAA0XHBVslP6ZL2jC4K7LCOq7OKhT"></div>
+                    </div>
+                    <div class="form-group d-flex justify-content-center">
+                        <button type="button" class="btn btn-dark btn-block" id="btnAdminLogin"><i class="fas fa-sign-in-alt"></i> Увійти</button>
+                    </div>
+                    <div class="form-group">
+                        <div class="" id="adminLoginResult" role="alert" style="display: none;"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- Admin login JS -->
+    @Scripts.Render("~/bundles/admin-login")
+    <!-- Recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</body>
+</html>

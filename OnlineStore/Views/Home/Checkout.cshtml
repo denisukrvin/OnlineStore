@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Оформлення замовлення";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="checkout-title">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h3>Оформлення замовлення</h3>
+                    <div class="checkout-empty mt-5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout mt-5" style="display: none;">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                   
+                    <form id="formCheckout" class="px-4 pt-3 shadow">
+
+                        <div id="checkout-contact">
+                            <div class="form-group d-flex justify-content-center">
+                                <h5 class="mb-2 mt-3">Контактні дані</h5>
+                            </div>
+                            <div class="form-group">
+                                <label for="userName">Ім'я</label>
+                                <input type="text" class="form-control" id="userName" name="userName">
+                            </div>
+                            <div class="form-group">
+                                <label for="userPhone">Телефон</label>
+                                <input type="text" class="form-control" id="userPhone" name="userPhone">
+                            </div>
+                            <div class="form-group">
+                                <label for="userEmail">E-mail</label>
+                                <input type="email" class="form-control" id="userEmail" name="userEmail">
+                            </div>
+                        </div>
+
+                        <hr class="mb-4 mt-4">
+
+                        <div id="checkout-delivery">
+                            <div class="form-group d-flex justify-content-center">
+                                <h5 class="mb-2">Доставка</h5>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="delivery" id="delivery-first" value="1"> Самовивіз з магазину
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="delivery" id="delivery-second" value="2"> Нова Пошта
+                            </div>
+                            <div class="form-group" id="nova-poshta-info" style="display: none;">
+                                <div class="form-group">
+                                    <label for="pib">ПІБ</label>
+                                    <input type="text" class="form-control" id="pib" name="PIB">
+                                </div>
+                                <div class="form-group">
+                                    <label for="city-select">Місто</label>
+                                    <select id="city-select" class="form-control">
+                                        <option value="null">-- Оберіть місто --</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="warehouse-select">Відділення</label>
+                                    <select id="warehouse-select" class="form-control" name="DeliveryWarehouse">
+                                        <option value="null">-- Оберіть відділення --</option>
+                                    </select>
+                                </div>  
+                            </div>
+                        </div>
+
+                        <hr class="mb-4 mt-4">
+
+                        <div id="checkout-payment">
+                            <div class="form-group d-flex justify-content-center">
+                                <h5 class="mb-2">Оплата</h5>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="payment" id="payment-first" value="1"> Оплата при отриманні
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="payment" id="payment-second" value="2"> Оплата на картку ПриватБанку
+                            </div>
+
+                            <hr class="mb-4 mt-4">
+
+                            <div class="form-group d-flex justify-content-center">
+                                <div class="g-recaptcha" data-sitekey="6LeYPXwUAAAAAA0XHBVslP6ZL2jC4K7LCOq7OKhT"></div>
+                            </div>
+
+                            <hr class="mb-4 mt-4">
+
+                            <div class="form-group">
+                                <div class="" id="checkout-result" style="display:none;" role="alert"></div>
+                            </div>
+                            <div class="form-group d-flex justify-content-center">
+                                <button type="button" id="btnCheckout" class="btn btn-outline-success">Замовити</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="col-md-5 offset-md-1 order-first order-md-last">
+
+                    <h5 class="d-flex justify-content-between mb-3">
+                        <span class="text-muted">Ваш кошик</span>
+                        <span class="badge badge-secondary badge-pill products-count">0</span>
+                    </h5>
+
+                    <div class="container-fluid checkout-products-list shadow"></div>
+                    <div class="container-fluid mt-4">
+                        <div class="row d-flex justify-content-between checkout-total shadow">
+                            <div class="col-md-6">
+                                <span>Всього</span>                             
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-end">
+                                <strong class="checkout-total-price"></strong>
+                            </div>
+                        </div>
+                    </div>                      
+                </div>
+            </div>
+        </div>       
+    </div>
+
+@section Scripts{
+    <!-- Checkout JS -->
+    @Scripts.Render("~/bundles/checkout")
+    <!-- Recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+}

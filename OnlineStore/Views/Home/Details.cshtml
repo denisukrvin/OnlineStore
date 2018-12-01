@@ -1,0 +1,136 @@
+﻿@model OnlineStore.Models.Product
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="product-details">
+    <div class="container">       
+        <div class="row">
+            <div class="col-md-6">
+                <img height="400" src="@Model.ImagePath" alt="@Model.Name">
+            </div>
+            <div class="col-md-6">
+                <div class="" id="alertAddToCart" role="alert" style="display:none;"></div>
+                <h1>@Model.Name</h1>
+                @if (Model.Availability)
+                {
+                    <p class="h6 text-success">В наявності</p>
+                }
+                else
+                {
+                    <p class="h6 text-danger">Немає в наявності</p>
+                }
+                <ul class="list-unstyled">
+                    <li>Код товару: @Model.ProductCode</li>
+                    <li>Категорія: @Html.ActionLink(Model.Category.Description, "Browse", "Home", new { category = Model.Category.Name }, new { @class = "text-dark" })</li>
+                </ul>
+                <ul class="list-unstyled">
+                    <li>
+                        <h4>@Model.Price грн</h4>
+                    </li>
+                </ul>
+                <div class="form-group">
+                    <div class="choice-quantity">
+                        <button type="button" class="btn btn-link minus">
+                            <i class="fas fa-minus-circle"></i>
+                        </button>
+                        <h6 class="product-quantity" style="display:inline;">1</h6>
+                        <button type="button" class="btn btn-link plus">
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
+                    </div>
+                    @if (Model.Availability)
+                    {
+                        <button type="button" class="btn btn-primary mt-2" id="btnAddToCart" data-id="@Model.Id">
+                            <i class="fas fa-shopping-cart"></i>
+                            В кошик
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-secondary mt-2" disabled>
+                            <i class="fas fa-shopping-cart"></i>
+                            В кошик
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Опис</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="true">Відгуки (@Model.Comments.Count)</a>
+                    </li>
+                </ul>
+                <div class="tab-content p-3" id="myTabContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        <p>@Model.Description</p>
+                    </div>
+                    <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                        @if (Model.Comments.Any())
+                        {
+                            foreach (var item in Model.Comments)
+                            {
+                                <div class="comment mb-3">
+                                    <div class="author d-flex justify-content-between">
+                                        <h5>@item.Author</h5>
+                                        <small class="text-muted">@item.Time</small>
+                                    </div>
+                                    <div class="text">
+                                        <p>@item.Text</p>
+                                    </div>
+                                    <hr class="mb-4 mt-4">
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>Ще ніхто не залишав відгук про цей товар. Але ви можете бути першим :)</p>
+                            <hr class="mb-4 mt-4">
+                        }
+
+                        <div class="form-comment">
+                            <form id="formComment">
+                                <div class="form-group">
+                                    <h5 class="mb-2 mt-3">Залишити відгук</h5>
+                                    <input type="hidden" name="ProductId" value="@Model.Id" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="userName">Ім'я</label>
+                                    <input type="text" class="form-control" name="Author" id="userName" maxlength="15" placeholder="Вкажіть ваше ім'я">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userText">Відгук</label>
+                                    <textarea class="form-control" rows="3" name="Text" id="userText" maxlength="300" placeholder="Напишіть ваш відгук"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LeYPXwUAAAAAA0XHBVslP6ZL2jC4K7LCOq7OKhT"></div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="btnAddComment">Додати</button>
+                                </div>
+                                <div class="form-group">
+                                    <div class="" id="addCommentResult" role="alert" style="display: none;"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <!-- Comments JS -->
+    @Scripts.Render("~/bundles/comments")
+    <!-- Recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+}
+

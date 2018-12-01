@@ -1,0 +1,61 @@
+﻿@model IEnumerable<OnlineStore.Models.Category>
+
+@{
+    ViewBag.Title = "Категорії";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row mb-5">
+        <div class="col-6">
+            <h5>Категорії</h5>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <a class="btn btn-dark btn-sm" href="@Url.Action("CreateCategory", "Admin")" role="button">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-1">
+            <h6>ID</h6>
+        </div>
+        <div class="col-3">
+            <h6>Ім'я</h6>
+        </div>
+        <div class="col-3">
+            <h6>Опис</h6>
+        </div>
+        <div class="col-4">
+            <h6>Дії</h6>
+        </div>
+    </div>
+
+    <hr />
+
+    @foreach (var item in Model)
+    {
+        <div class="row mb-2">
+            <div class="col-3 col-sm-1">
+                <p>@item.Id</p>
+            </div>
+            <div class="col-9 col-sm-3">
+                <p>@item.Name</p>
+            </div>
+            <div class="col-sm-3">
+                <p>@item.Description</p>
+            </div>          
+            <div class="col-sm-4">
+                <a class="btn btn-success btn-sm" href="@Url.Action("DetailsCategory", "Admin", new { id = item.Id }, null)" role="button">
+                    <i class="far fa-eye"></i>
+                </a>
+                <a class="btn btn-primary btn-sm" href="@Url.Action("EditCategory", "Admin", new { id = item.Id }, null)" role="button">
+                    <i class="fas fa-pen"></i>
+                </a>
+                <a class="btn btn-danger btn-sm" href="@Url.Action("DeleteCategory", "Admin", new { id = item.Id }, null)" role="button">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div>
+        </div>
+    }
+

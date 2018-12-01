@@ -1,0 +1,73 @@
+﻿@model IEnumerable<OnlineStore.Models.Product>
+
+@{
+
+    var lastProducts = Model.OrderByDescending(p => p.Id).Take(4);
+    var randomProducts = Model.OrderBy(r => Guid.NewGuid()).Take(4);
+    var bestsellers = Model.Where(t => t.ProductCode == 1004 || t.ProductCode == 1006 || t.ProductCode == 1026 || t.ProductCode == 1007);
+}
+        
+    <div class="last-products mt-5">
+        <h4>Новинки</h4>
+        <div class="row mt-3">
+            @foreach (var item in lastProducts)
+            {
+                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow mb-5">
+                        <a href="@Url.Action("Details", "Home", new { category = item.Category.Name, code = item.ProductCode })">
+                            <img class="card-img-top px-5 py-2" src="@item.ImagePath" height="180" alt="Product image">
+                        </a>
+                        <div class="card-body text-center">
+                            <h6 class="card-title">@item.Name</h6>
+                            <p class="card-text">@item.Price грн</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="bestsellers mt-5">
+        <h4>Хіти продажу</h4>
+        <div class="row mt-3">
+            @foreach (var item in bestsellers)
+            {
+                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow mb-5">
+                        <a href="@Url.Action("Details", "Home", new { category = item.Category.Name, code = item.ProductCode })">
+                            <img class="card-img-top px-5 py-2" src="@item.ImagePath" height="180" alt="Product image">
+                        </a>
+                        <div class="card-body text-center">
+                            <h6 class="card-title">@item.Name</h6>
+                            <p class="card-text">@item.Price грн</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="random-products mt-5">
+        <h4>Випадкові</h4>
+        <div class="row mt-3">
+            @foreach (var item in randomProducts)
+            {
+                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow mb-5">
+                        <a href="@Url.Action("Details", "Home", new { category = item.Category.Name, code = item.ProductCode })">
+                            <img class="card-img-top px-5 py-2" src="@item.ImagePath" height="180" alt="Product image">
+                        </a>
+                        <div class="card-body text-center">
+                            <h6 class="card-title">@item.Name</h6>
+                            <p class="card-text">@item.Price грн</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+

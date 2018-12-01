@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OnlineStore.Models.UserEmail>
+
+@{
+    ViewBag.Title = "Розсилка";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row mb-5">
+        <div class="col-6">
+            <h5>Розсилка</h5>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <a class="btn btn-dark btn-sm" href="@Url.Action("CreateNewsletter", "Admin")" role="button">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            <h6>ID</h6>
+        </div>
+        <div class="col-10">
+            <h6>Пошта</h6>
+        </div>
+    </div>
+
+    <hr />
+
+    @foreach (var item in Model)
+    {
+        <div class="row mb-2">
+            <div class="col-2">
+                <p>@item.Id</p>
+            </div>
+            <div class="col-10">
+                <p>@item.Email</p>
+            </div>                     
+        </div>
+    }

@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Головна";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        @{Html.RenderAction("GetProducts", "Home");}
+    </div>

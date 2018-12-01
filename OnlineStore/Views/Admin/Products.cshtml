@@ -1,0 +1,55 @@
+﻿@model IEnumerable<OnlineStore.Models.Product>
+
+@{
+    ViewBag.Title = "Товари";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row mb-5">
+        <div class="col-6">
+            <h5>Товари</h5>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <a class="btn btn-dark btn-sm" href="@Url.Action("CreateProduct", "Admin")" role="button">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-1">
+            <h6>ID</h6>
+        </div>
+        <div class="col-6">
+            <h6>Назва</h6>
+        </div>
+        <div class="col-5">
+            <h6>Дії</h6>
+        </div>
+    </div>
+
+    <hr />
+
+    @foreach (var item in Model)
+    {
+        <div class="row mb-2">
+            <div class="col-1">
+                <p>@item.Id</p>
+            </div>
+            <div class="col-9 col-sm-6">
+                <p>@item.Name</p>
+            </div>
+            <div class="col-md-5">
+                <a class="btn btn-success btn-sm" href="@Url.Action("DetailsProduct", "Admin", new { id = item.Id }, null)" role="button">
+                    <i class="far fa-eye"></i>
+                </a>
+                <a class="btn btn-primary btn-sm" href="@Url.Action("EditProduct", "Admin", new { id = item.Id }, null)" role="button">
+                    <i class="fas fa-pen"></i>
+                </a>
+                <a class="btn btn-danger btn-sm" href="@Url.Action("DeleteProduct", "Admin", new { id = item.Id }, null)" role="button">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div>
+        </div>
+    }
+
